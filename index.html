@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jurnal Pendakian Gn. Sumbing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@400;900&family=Space+Grotesk:wght@300;500;700&display=swap");
+
+      :root {
+        --forest-green: #1b2e25;
+        --earth-brown: #4a3728;
+        --moss: #8da05e;
+        --sand: #f2e8cf;
+      }
+
+      body {
+        font-family: "Space Grotesk", sans-serif;
+        background-color: var(--forest-green);
+        color: var(--sand);
+        margin: 0;
+        overflow-x: hidden;
+      }
+
+      /* Tekstur Alam & Tanpa Celah */
+      .natural-bg {
+        background-image: radial-gradient(
+          circle at 2px 2px,
+          rgba(255, 255, 255, 0.05) 1px,
+          transparent 0
+        );
+        background-size: 40px 40px;
+      }
+
+      .hero-section {
+        /* background: linear-gradient(
+            to bottom,
+            rgba(27, 46, 37, 0.4),
+            var(--forest-green)
+          ),
+          url("https://www.transparenttextures.com/patterns/asfalt-dark.png"); */
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url(https://datagunung.com/images/Sumbing.webp);
+        background-size: cover;
+        background-position: right center;
+        padding: 6rem 2rem;
+        text-align: center;
+        border-bottom: 1px solid rgba(141, 160, 94, 0.2);
+      }
+
+      .main-title {
+        font-family: "Unbounded", sans-serif;
+        font-weight: 900;
+        font-size: clamp(2.5rem, 8vw, 6rem);
+        line-height: 0.9;
+        letter-spacing: -0.05em;
+        text-transform: uppercase;
+        color: var(--moss);
+        margin-bottom: 1rem;
+      }
+
+      .organic-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        transition: all 0.4s ease;
+      }
+
+      .organic-card:hover {
+        background: rgba(255, 255, 255, 0.07);
+        border-color: var(--moss);
+      }
+
+      .itinerary-line {
+        border-left: 2px dashed var(--moss);
+        margin-left: 0.75rem;
+      }
+
+      .time-bubble {
+        background: var(--moss);
+        color: var(--forest-green);
+        font-family: "Unbounded", sans-serif;
+        font-size: 0.65rem;
+        padding: 2px 8px;
+        border-radius: 4px;
+      }
+
+      /* Custom Checkbox Alam */
+      .check-container input {
+        display: none;
+      }
+      .check-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 8px;
+        transition: background 0.3s;
+      }
+      .check-container:hover {
+        background: rgba(141, 160, 94, 0.1);
+      }
+      .custom-check {
+        width: 18px;
+        height: 18px;
+        border: 2px solid var(--moss);
+        display: inline-block;
+        position: relative;
+      }
+      .check-container input:checked + .custom-check {
+        background: var(--moss);
+      }
+      .check-container input:checked + .custom-check::after {
+        content: "✓";
+        position: absolute;
+        color: var(--forest-green);
+        font-size: 12px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .section-label {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        font-family: "Unbounded", sans-serif;
+        font-size: 0.7rem;
+        color: var(--moss);
+        letter-spacing: 0.3em;
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+  <body class="natural-bg">
+    <!-- HERO -->
+    <section class="hero-section">
+      <div class="max-w-5xl mx-auto">
+        <span class="text-xs tracking-[0.6em] uppercase text-moss font-bold"
+          >Ekspedisi Gajah Mungkur</span
+        >
+        <h1 class="main-title italic">
+          SUMBING<br /><span class="text-sand">3.371</span>
+        </h1>
+        <div
+          class="flex justify-center gap-8 mt-6 text-[10px] font-bold uppercase tracking-widest text-moss"
+        >
+          <span>Wonosobo, Jateng</span>
+          <span>3.371 MDPL</span>
+          <span>6 - 8 Februari 2026</span>
+        </div>
+      </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-4 pb-32">
+      <div
+        class="grid grid-cols-2 md:grid-cols-4 border-y border-white/10 mb-20"
+      >
+        <div class="p-8 border-r border-white/10">
+          <p class="text-[10px] uppercase text-moss mb-2">Transport Bus</p>
+          <p class="text-xl font-bold italic uppercase">Derry</p>
+        </div>
+        <div class="p-8 md:border-r border-white/10">
+          <p class="text-[10px] uppercase text-moss mb-2">Basecamp & Simaksi</p>
+          <p class="text-xl font-bold italic uppercase">Derry</p>
+        </div>
+        <div class="p-8 border-r border-white/10">
+          <p class="text-[10px] uppercase text-moss mb-2">Logistik Utama</p>
+          <p class="text-xl font-bold italic uppercase">Arya</p>
+        </div>
+        <div class="p-8">
+          <p class="text-[10px] uppercase text-moss mb-2">Safety & Medic</p>
+          <p class="text-xl font-bold italic uppercase">Bayu</p>
+        </div>
+      </div>
+
+      <!-- JADWAL PERJALANAN (KONSEP LOGBOOK) -->
+      <section class="mb-32">
+        <div class="flex items-center gap-4 mb-12">
+          <h2 class="text-4xl font-black italic uppercase tracking-tighter">
+            Timeline Perjalanan
+          </h2>
+          <div class="h-[1px] flex-grow bg-white/10"></div>
+        </div>
+
+        <div
+          class="grid grid-cols-1 lg:grid-cols-3 gap-0 border border-white/10 rounded-3xl overflow-hidden"
+        >
+          <!-- JUMAT -->
+          <div
+            class="p-10 border-b lg:border-b-0 lg:border-r border-white/10 bg-white/[0.01]"
+          >
+            <h3
+              class="font-black text-moss uppercase text-sm mb-8 tracking-widest"
+            >
+              Day 01: Keberangkatan
+            </h3>
+            <div class="itinerary-line space-y-8">
+              <div class="relative pl-6">
+                <span class="time-bubble absolute -left-[1.35rem] top-0"
+                  >18:00</span
+                >
+                <p class="text-sm font-bold uppercase leading-tight ml-4">
+                  Kumpul Terminal Tg. Priok
+                </p>
+              </div>
+              <div class="relative pl-6">
+                <span class="time-bubble absolute -left-[1.35rem] top-0"
+                  >18:30</span
+                >
+                <p class="text-sm font-bold uppercase ml-4">
+                  Perjalanan Priok - Mendolo
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- SABTU -->
+          <div
+            class="p-10 border-b lg:border-b-0 lg:border-r border-white/10 bg-white/[0.03]"
+          >
+            <h3
+              class="font-black text-moss uppercase text-sm mb-8 tracking-widest"
+            >
+              Day 02: Vertical Move
+            </h3>
+            <div class="itinerary-line space-y-8">
+              <div class="relative pl-6">
+                <span class="time-bubble absolute -left-[1.35rem] top-0"
+                  >05:15</span
+                >
+                <p class="text-sm font-bold uppercase ml-4">Tiba di Mendolo</p>
+              </div>
+              <div class="relative pl-6">
+                <span class="time-bubble absolute -left-[1.35rem] top-0"
+                  >05:30</span
+                >
+                <p class="text-sm font-bold uppercase ml-4">Menuju BC</p>
+              </div>
+              <div class="relative pl-6">
+                <span class="time-bubble absolute -left-[1.35rem] top-0"
+                  >06:00</span
+                >
+                <p class="text-sm font-bold uppercase ml-4">
+                  Istirahat, Sarapan & Prepare
+                </p>
+              </div>
+              <div class="relative pl-6">
+                <span class="time-bubble absolute -left-[1.35rem] top-0"
+                  >07:30</span
+                >
+                <p class="text-sm font-bold uppercase ml-4">
+                  Registrasi Simaksi
+                </p>
+              </div>
+              <div class="relative pl-6">
+                <span class="time-bubble absolute -left-[1.35rem] top-0"
+                  >08:00</span
+                >
+                <p class="text-sm font-bold uppercase ml-4">Start Tracking</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- MINGGU -->
+          <div class="p-10 bg-white/[0.01]">
+            <h3
+              class="font-black text-moss uppercase text-sm mb-8 tracking-widest"
+            >
+              Day 03: The Summit
+            </h3>
+            <div class="itinerary-line space-y-6">
+              <div class="relative pl-6">
+                <span class="time-bubble absolute -left-[1.35rem] top-0"
+                  >02:30</span
+                >
+                <p class="text-sm font-bold uppercase ml-4">Persiapan Summit</p>
+              </div>
+              <div class="relative pl-6">
+                <span class="time-bubble absolute -left-[1.35rem] top-0"
+                  >03:00</span
+                >
+                <p class="text-sm font-bold uppercase ml-4">Summit Attack</p>
+              </div>
+              <div class="relative pl-6">
+                <span class="time-bubble absolute -left-[1.35rem] top-0"
+                  >10:30</span
+                >
+                <p class="text-sm font-bold uppercase ml-4">
+                  Turun ke Area Camp
+                </p>
+              </div>
+              <div class="relative pl-6">
+                <span class="time-bubble absolute -left-[1.35rem] top-0"
+                  >13:30</span
+                >
+                <p class="text-sm font-bold uppercase ml-4">
+                  Beres-beres & packing
+                </p>
+              </div>
+              <div class="relative pl-6">
+                <span class="time-bubble absolute -left-[1.35rem] top-0"
+                  >14:00</span
+                >
+                <p class="text-sm font-bold uppercase ml-4">
+                  Turun ke Basecamp
+                </p>
+              </div>
+              <div class="relative pl-6">
+                <span class="time-bubble absolute -left-[1.35rem] top-0"
+                  >17:00</span
+                >
+                <p class="text-sm font-bold uppercase ml-4">
+                  Mandi & Persiapan Pulang
+                </p>
+              </div>
+              <div class="relative pl-6">
+                <span class="time-bubble absolute -left-[1.35rem] top-0"
+                  >17:30</span
+                >
+                <p class="text-sm font-bold uppercase ml-4">
+                  Berangkat ke Terminal
+                </p>
+              </div>
+              <div class="relative pl-6">
+                <span class="time-bubble absolute -left-[1.35rem] top-0"
+                  >18:30</span
+                >
+                <p class="text-sm font-bold uppercase ml-4">
+                  OTW TG PRIOK (Arrive 03:30)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GEAR & LOGISTIK (ORGANIC GRID) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <!-- LEFT: TEAM GEAR -->
+        <div class="lg:col-span-8">
+          <div class="flex items-center gap-4 mb-8">
+            <h2 class="text-2xl font-black italic uppercase">
+              Perlengkapan Kelompok
+            </h2>
+          </div>
+
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 rounded-3xl overflow-hidden border border-white/10"
+          >
+            <div class="p-8 bg-forest-green">
+              <h4
+                class="text-moss font-black text-xs uppercase mb-6 tracking-widest"
+              >
+                Shelter Team
+              </h4>
+              <div class="space-y-4">
+                <div
+                  class="flex justify-between items-center text-sm font-medium"
+                >
+                  <span>Tenda Kap. 4 (2)</span
+                  ><span class="text-[10px] font-black uppercase text-moss"
+                    >Derry, Bayu</span
+                  >
+                </div>
+                <div
+                  class="flex justify-between items-center text-sm font-medium"
+                >
+                  <span>Flysheet & Tiang</span
+                  ><span class="text-[10px] font-black uppercase text-moss"
+                    >Bayu</span
+                  >
+                </div>
+                <div
+                  class="flex justify-between items-center text-sm font-medium"
+                >
+                  <span>Tali & Pasak (20)</span
+                  ><span class="text-[10px] font-black uppercase text-moss"
+                    >Bayu, Derry</span
+                  >
+                </div>
+                <div
+                  class="flex justify-between items-center text-sm font-medium"
+                >
+                  <span>Lampu Tenda (2)</span
+                  ><span class="text-[10px] font-black uppercase text-moss"
+                    >Derry, Bayu</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="p-8 bg-forest-green">
+              <h4
+                class="text-moss font-black text-xs uppercase mb-6 tracking-widest"
+              >
+                Kitchen & Medic
+              </h4>
+              <div class="space-y-4">
+                <div
+                  class="flex justify-between items-center text-sm font-medium"
+                >
+                  <span>Kompor Port (2)</span
+                  ><span class="text-[10px] font-black uppercase text-moss"
+                    >Derry, Alvaro</span
+                  >
+                </div>
+                <div
+                  class="flex justify-between items-center text-sm font-medium"
+                >
+                  <span>Nesting (2 set)</span
+                  ><span class="text-[10px] font-black uppercase text-moss"
+                    >Alvaro, Derry</span
+                  >
+                </div>
+                <div
+                  class="flex justify-between items-center text-sm font-medium"
+                >
+                  <span>Gas (4 kaleng)</span
+                  ><span class="text-[10px] font-black uppercase text-moss"
+                    >Bayu</span
+                  >
+                </div>
+                <div
+                  class="flex justify-between items-center text-sm font-medium"
+                >
+                  <span>Medic Case</span
+                  ><span class="text-[10px] font-black uppercase text-moss"
+                    >Bayu</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- LOGISTIK TIM (STRIP) -->
+          <div class="mt-12 p-10 organic-card rounded-[2.5rem]">
+            <div class="flex justify-between items-center mb-8">
+              <h4 class="font-black italic uppercase text-xl">
+                Dapur Logistik
+                <span class="text-moss ml-2 text-sm font-normal"
+                  >PIC: Arya</span
+                >
+              </h4>
+            </div>
+            <div class="flex flex-wrap gap-4">
+              <span
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                >Indomie (16)</span
+              >
+              <span
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                >Nugget(1 Pk)</span
+              >
+              <span
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                >Sosis (1 Pk)</span
+              >
+              <span
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                >Bakso (3 Pk)</span
+              >
+              <span
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                >Beras</span
+              >
+              <span
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                >Minyak</span
+              >
+              <span
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                >Kopi</span
+              >
+              <span
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                >Energen</span
+              >
+              <span
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                >Coki-coki</span
+              >
+              <span
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                >So Nice (1Tp)</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: PERSONAL CHECKLIST -->
+        <div class="lg:col-span-4">
+          <div class="organic-card p-10 rounded-[3rem] sticky top-8">
+            <h2 class="text-2xl font-black italic uppercase mb-8">
+              Cek Perlengkapan Pribadimu
+            </h2>
+
+            <div class="space-y-6">
+              <div>
+                <p
+                  class="text-[10px] uppercase font-black text-moss mb-4 tracking-tighter"
+                >
+                  Pakaian
+                </p>
+                <div class="space-y-1">
+                  <label class="check-container"
+                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><span class="text-xs font-bold uppercase"
+                      >Jaket Dingin/Polar</span
+                    ></label
+                  >
+                  <label class="check-container"
+                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><span class="text-xs font-bold uppercase"
+                      >Pakaian Ganti (2)</span
+                    ></label
+                  >
+                  <label class="check-container"
+                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><span class="text-xs font-bold uppercase"
+                      >Sarung Tangan</span
+                    ></label
+                  >
+                  <label class="check-container"
+                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><span class="text-xs font-bold uppercase"
+                      >Kaos Kaki(2)</span
+                    ></label
+                  >
+                </div>
+              </div>
+
+              <div>
+                <p
+                  class="text-[10px] uppercase font-black text-moss mb-4 tracking-tighter"
+                >
+                  Perlengkapan Tidur & P3K
+                </p>
+                <div class="space-y-1">
+                  <label class="check-container"
+                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><span class="text-xs font-bold uppercase"
+                      >SB & Matras</span
+                    ></label
+                  >
+                  <label class="check-container"
+                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><span class="text-xs font-bold uppercase"
+                      >P3K Pribadi</span
+                    ></label
+                  >
+                  <label class="check-container"
+                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><span class="text-xs font-bold uppercase"
+                      >Emergency Blanket</span
+                    ></label
+                  >
+                </div>
+              </div>
+
+              <div>
+                <p
+                  class="text-[10px] uppercase font-black text-moss mb-4 tracking-tighter"
+                >
+                  Trekking
+                </p>
+                <div class="space-y-1">
+                  <label class="check-container"
+                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><span class="text-xs font-bold uppercase"
+                      >Trekking Pole</span
+                    ></label
+                  >
+                  <label class="check-container"
+                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><span class="text-xs font-bold uppercase"
+                      >Headlamp</span
+                    ></label
+                  >
+                  <label class="check-container"
+                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><span class="text-xs font-bold uppercase"
+                      >Jas Hujan</span
+                    ></label
+                  >
+                  <label class="check-container"
+                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><span class="text-xs font-bold uppercase"
+                      >Power Bank</span
+                    ></label
+                  >
+                  <label class="check-container"
+                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><span class="text-xs font-bold uppercase italic underline"
+                      >Nasi Bungkus (Beli saat di bc)</span
+                    ></label
+                  >
+                  <label class="check-container"
+                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><span class="text-xs font-bold uppercase"
+                      >Air 1.5L (2) & 600ml (2)</span
+                    ></label
+                  >
+                  <label class="check-container"
+                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><span class="text-xs font-bold uppercase"
+                      >Coklat & Madu</span
+                    ></label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="mt-40 text-center border-t border-white/10 pt-20">
+        <p
+          class="text-[10px] font-black uppercase tracking-[1em] text-moss opacity-50"
+        >
+          Sumbing High Altitude Expedition • 2026
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
