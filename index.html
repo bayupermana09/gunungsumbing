@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
@@ -23,7 +23,6 @@
         overflow-x: hidden;
       }
 
-      /* Tekstur Alam & Tanpa Celah */
       .natural-bg {
         background-image: radial-gradient(
           circle at 2px 2px,
@@ -34,22 +33,16 @@
       }
 
       .hero-section {
-        /* background: linear-gradient(
-            to bottom,
-            rgba(27, 46, 37, 0.4),
-            var(--forest-green)
-          ),
-          url("https://www.transparenttextures.com/patterns/asfalt-dark.png"); */
-        background-image: linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)
-          ),
+        background-image:
+          linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
           url(https://datagunung.com/images/Sumbing.webp);
         background-size: cover;
         background-position: right center;
         padding: 6rem 2rem;
         text-align: center;
         border-bottom: 1px solid rgba(141, 160, 94, 0.2);
+        position: relative;
+        overflow: hidden;
       }
 
       .main-title {
@@ -87,6 +80,12 @@
         font-size: 0.65rem;
         padding: 2px 8px;
         border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+
+      .time-bubble:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(141, 160, 94, 0.5);
       }
 
       /* Custom Checkbox Alam */
@@ -111,9 +110,11 @@
         border: 2px solid var(--moss);
         display: inline-block;
         position: relative;
+        transition: all 0.3s ease;
       }
       .check-container input:checked + .custom-check {
         background: var(--moss);
+        transform: rotate(360deg);
       }
       .check-container input:checked + .custom-check::after {
         content: "✓";
@@ -134,20 +135,125 @@
         letter-spacing: 0.3em;
         opacity: 0.5;
       }
+
+      /* Animation Classes */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .slide-in-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+
+      .slide-in-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .slide-in-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+
+      .slide-in-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .scale-in {
+        opacity: 0;
+        transform: scale(0.9);
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+      }
+
+      .scale-in.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* Parallax effect */
+      .parallax-slow {
+        transition: transform 0.5s ease-out;
+      }
+
+      /* Floating animation for hero */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .float-animation {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      /* Pulse animation for time bubbles */
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.7;
+        }
+      }
+
+      .pulse-animation {
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      /* Progress bar for checklist */
+      .progress-bar {
+        height: 4px;
+        background: rgba(141, 160, 94, 0.2);
+        border-radius: 2px;
+        overflow: hidden;
+        margin-top: 1rem;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: var(--moss);
+        transition: width 0.5s ease;
+        box-shadow: 0 0 10px rgba(141, 160, 94, 0.5);
+      }
     </style>
   </head>
   <body class="natural-bg">
     <!-- HERO -->
     <section class="hero-section">
       <div class="max-w-5xl mx-auto">
-        <span class="text-xs tracking-[0.6em] uppercase text-moss font-bold"
+        <span
+          class="text-xs tracking-[0.6em] uppercase text-moss font-bold fade-in"
           >Ekspedisi Gajah Mungkur</span
         >
-        <h1 class="main-title italic">
+        <h1 class="main-title italic float-animation">
           SUMBING<br /><span class="text-sand">3.371</span>
         </h1>
         <div
-          class="flex justify-center gap-8 mt-6 text-[10px] font-bold uppercase tracking-widest text-moss"
+          class="flex justify-center gap-8 mt-6 text-[10px] font-bold uppercase tracking-widest text-moss fade-in"
         >
           <span>Wonosobo, Jateng</span>
           <span>3.371 MDPL</span>
@@ -158,7 +264,7 @@
 
     <main class="max-w-7xl mx-auto px-4 pb-32">
       <div
-        class="grid grid-cols-2 md:grid-cols-4 border-y border-white/10 mb-20"
+        class="grid grid-cols-2 md:grid-cols-4 border-y border-white/10 mb-20 scale-in"
       >
         <div class="p-8 border-r border-white/10">
           <p class="text-[10px] uppercase text-moss mb-2">Transport</p>
@@ -180,7 +286,7 @@
 
       <!-- JADWAL PERJALANAN (KONSEP LOGBOOK) -->
       <section class="mb-32">
-        <div class="flex items-center gap-4 mb-12">
+        <div class="flex items-center gap-4 mb-12 fade-in">
           <h2 class="text-4xl font-black italic uppercase tracking-tighter">
             Timeline Perjalanan
           </h2>
@@ -192,7 +298,7 @@
         >
           <!-- JUMAT -->
           <div
-            class="p-10 border-b lg:border-b-0 lg:border-r border-white/10 bg-white/[0.01]"
+            class="p-10 border-b lg:border-b-0 lg:border-r border-white/10 bg-white/[0.01] slide-in-left"
           >
             <h3
               class="font-black text-moss uppercase text-sm mb-8 tracking-widest"
@@ -200,7 +306,7 @@
               Day 01: Keberangkatan
             </h3>
             <div class="itinerary-line space-y-8">
-              <div class="relative pl-6">
+              <div class="relative pl-6 itinerary-item">
                 <span class="time-bubble absolute -left-[1.35rem] top-0"
                   >18:00</span
                 >
@@ -208,7 +314,7 @@
                   Kumpul Terminal Tg. Priok
                 </p>
               </div>
-              <div class="relative pl-6">
+              <div class="relative pl-6 itinerary-item">
                 <span class="time-bubble absolute -left-[1.35rem] top-0"
                   >18:30</span
                 >
@@ -221,7 +327,7 @@
 
           <!-- SABTU -->
           <div
-            class="p-10 border-b lg:border-b-0 lg:border-r border-white/10 bg-white/[0.03]"
+            class="p-10 border-b lg:border-b-0 lg:border-r border-white/10 bg-white/[0.03] fade-in"
           >
             <h3
               class="font-black text-moss uppercase text-sm mb-8 tracking-widest"
@@ -229,19 +335,19 @@
               Day 02: Vertical Move
             </h3>
             <div class="itinerary-line space-y-8">
-              <div class="relative pl-6">
+              <div class="relative pl-6 itinerary-item">
                 <span class="time-bubble absolute -left-[1.35rem] top-0"
                   >05:15</span
                 >
                 <p class="text-sm font-bold uppercase ml-4">Tiba di Mendolo</p>
               </div>
-              <div class="relative pl-6">
+              <div class="relative pl-6 itinerary-item">
                 <span class="time-bubble absolute -left-[1.35rem] top-0"
                   >05:30</span
                 >
                 <p class="text-sm font-bold uppercase ml-4">Menuju BC</p>
               </div>
-              <div class="relative pl-6">
+              <div class="relative pl-6 itinerary-item">
                 <span class="time-bubble absolute -left-[1.35rem] top-0"
                   >06:00</span
                 >
@@ -249,7 +355,7 @@
                   Istirahat, Sarapan & Prepare
                 </p>
               </div>
-              <div class="relative pl-6">
+              <div class="relative pl-6 itinerary-item">
                 <span class="time-bubble absolute -left-[1.35rem] top-0"
                   >07:30</span
                 >
@@ -257,7 +363,7 @@
                   Registrasi Simaksi
                 </p>
               </div>
-              <div class="relative pl-6">
+              <div class="relative pl-6 itinerary-item">
                 <span class="time-bubble absolute -left-[1.35rem] top-0"
                   >08:00</span
                 >
@@ -267,26 +373,26 @@
           </div>
 
           <!-- MINGGU -->
-          <div class="p-10 bg-white/[0.01]">
+          <div class="p-10 bg-white/[0.01] slide-in-right">
             <h3
               class="font-black text-moss uppercase text-sm mb-8 tracking-widest"
             >
               Day 03: The Summit
             </h3>
             <div class="itinerary-line space-y-6">
-              <div class="relative pl-6">
+              <div class="relative pl-6 itinerary-item">
                 <span class="time-bubble absolute -left-[1.35rem] top-0"
                   >02:30</span
                 >
                 <p class="text-sm font-bold uppercase ml-4">Persiapan Summit</p>
               </div>
-              <div class="relative pl-6">
+              <div class="relative pl-6 itinerary-item">
                 <span class="time-bubble absolute -left-[1.35rem] top-0"
                   >03:00</span
                 >
                 <p class="text-sm font-bold uppercase ml-4">Summit Attack</p>
               </div>
-              <div class="relative pl-6">
+              <div class="relative pl-6 itinerary-item">
                 <span class="time-bubble absolute -left-[1.35rem] top-0"
                   >10:30</span
                 >
@@ -294,7 +400,7 @@
                   Turun ke Area Camp
                 </p>
               </div>
-              <div class="relative pl-6">
+              <div class="relative pl-6 itinerary-item">
                 <span class="time-bubble absolute -left-[1.35rem] top-0"
                   >13:30</span
                 >
@@ -302,7 +408,7 @@
                   Beres-beres & packing
                 </p>
               </div>
-              <div class="relative pl-6">
+              <div class="relative pl-6 itinerary-item">
                 <span class="time-bubble absolute -left-[1.35rem] top-0"
                   >14:00</span
                 >
@@ -310,7 +416,7 @@
                   Turun ke Basecamp
                 </p>
               </div>
-              <div class="relative pl-6">
+              <div class="relative pl-6 itinerary-item">
                 <span class="time-bubble absolute -left-[1.35rem] top-0"
                   >17:00</span
                 >
@@ -318,7 +424,7 @@
                   Mandi & Persiapan Pulang
                 </p>
               </div>
-              <div class="relative pl-6">
+              <div class="relative pl-6 itinerary-item">
                 <span class="time-bubble absolute -left-[1.35rem] top-0"
                   >17:30</span
                 >
@@ -326,13 +432,13 @@
                   Berangkat ke Terminal
                 </p>
               </div>
-              <div class="relative pl-6">
+              <div class="relative pl-6 itinerary-item">
                 <span class="time-bubble absolute -left-[1.35rem] top-0"
                   >18:30</span
                 >
                 <p class="text-sm font-bold uppercase ml-4">MENUJU TG PRIOK</p>
               </div>
-              <div class="relative pl-6">
+              <div class="relative pl-6 itinerary-item">
                 <span class="time-bubble absolute -left-[1.35rem] top-0"
                   >03:30</span
                 >
@@ -349,14 +455,14 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <!-- LEFT: TEAM GEAR -->
         <div class="lg:col-span-8">
-          <div class="flex items-center gap-4 mb-8">
+          <div class="flex items-center gap-4 mb-8 fade-in">
             <h2 class="text-2xl font-black italic uppercase">
               Perlengkapan Kelompok
             </h2>
           </div>
 
           <div
-            class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 rounded-3xl overflow-hidden border border-white/10"
+            class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 rounded-3xl overflow-hidden border border-white/10 scale-in"
           >
             <div class="p-8 bg-forest-green">
               <h4
@@ -366,7 +472,7 @@
               </h4>
               <div class="space-y-4">
                 <div
-                  class="flex justify-between items-center text-sm font-medium"
+                  class="flex justify-between items-center text-sm font-medium gear-item"
                 >
                   <span>Tenda Kap. 4 (2)</span
                   ><span class="text-[10px] font-black uppercase text-moss"
@@ -374,7 +480,7 @@
                   >
                 </div>
                 <div
-                  class="flex justify-between items-center text-sm font-medium"
+                  class="flex justify-between items-center text-sm font-medium gear-item"
                 >
                   <span>Flysheet & Tiang</span
                   ><span class="text-[10px] font-black uppercase text-moss"
@@ -382,7 +488,7 @@
                   >
                 </div>
                 <div
-                  class="flex justify-between items-center text-sm font-medium"
+                  class="flex justify-between items-center text-sm font-medium gear-item"
                 >
                   <span>Tali & Pasak (20)</span
                   ><span class="text-[10px] font-black uppercase text-moss"
@@ -390,7 +496,7 @@
                   >
                 </div>
                 <div
-                  class="flex justify-between items-center text-sm font-medium"
+                  class="flex justify-between items-center text-sm font-medium gear-item"
                 >
                   <span>Lampu Tenda (2)</span
                   ><span class="text-[10px] font-black uppercase text-moss"
@@ -407,7 +513,7 @@
               </h4>
               <div class="space-y-4">
                 <div
-                  class="flex justify-between items-center text-sm font-medium"
+                  class="flex justify-between items-center text-sm font-medium gear-item"
                 >
                   <span>Kompor Port (2)</span
                   ><span class="text-[10px] font-black uppercase text-moss"
@@ -415,7 +521,7 @@
                   >
                 </div>
                 <div
-                  class="flex justify-between items-center text-sm font-medium"
+                  class="flex justify-between items-center text-sm font-medium gear-item"
                 >
                   <span>Nesting (2 set)</span
                   ><span class="text-[10px] font-black uppercase text-moss"
@@ -423,7 +529,7 @@
                   >
                 </div>
                 <div
-                  class="flex justify-between items-center text-sm font-medium"
+                  class="flex justify-between items-center text-sm font-medium gear-item"
                 >
                   <span>Gas (4 kaleng)</span
                   ><span class="text-[10px] font-black uppercase text-moss"
@@ -431,7 +537,7 @@
                   >
                 </div>
                 <div
-                  class="flex justify-between items-center text-sm font-medium"
+                  class="flex justify-between items-center text-sm font-medium gear-item"
                 >
                   <span>Medic Case</span
                   ><span class="text-[10px] font-black uppercase text-moss"
@@ -443,7 +549,7 @@
           </div>
 
           <!-- LOGISTIK TIM (STRIP) -->
-          <div class="mt-12 p-10 organic-card rounded-[2.5rem]">
+          <div class="mt-12 p-10 organic-card rounded-[2.5rem] fade-in">
             <div class="flex justify-between items-center mb-8">
               <h4 class="font-black italic uppercase text-xl">
                 Dapur Logistik
@@ -452,45 +558,45 @@
                 >
               </h4>
             </div>
-            <div class="flex flex-wrap gap-4">
+            <div class="flex flex-wrap gap-4" id="logistikTags">
               <span
-                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase logistik-tag"
                 >Indomie (16)</span
               >
               <span
-                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase logistik-tag"
                 >Nugget(1 Pk)</span
               >
               <span
-                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase logistik-tag"
                 >Sosis (1 Pk)</span
               >
               <span
-                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase logistik-tag"
                 >Bakso (3 Pk)</span
               >
               <span
-                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase logistik-tag"
                 >Beras</span
               >
               <span
-                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase logistik-tag"
                 >Minyak</span
               >
               <span
-                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase logistik-tag"
                 >Kopi</span
               >
               <span
-                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase logistik-tag"
                 >Energen</span
               >
               <span
-                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase logistik-tag"
                 >Coki-coki</span
               >
               <span
-                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase"
+                class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold uppercase logistik-tag"
                 >So Nice (1Tp)</span
               >
             </div>
@@ -499,12 +605,25 @@
 
         <!-- RIGHT: PERSONAL CHECKLIST -->
         <div class="lg:col-span-4">
-          <div class="organic-card p-10 rounded-[3rem] sticky top-8">
-            <h2 class="text-2xl font-black italic uppercase mb-8">
+          <div
+            class="organic-card p-10 rounded-[3rem] sticky top-8 slide-in-right"
+          >
+            <h2 class="text-2xl font-black italic uppercase mb-4">
               Cek Perlengkapan Pribadimu
             </h2>
 
-            <div class="space-y-6">
+            <div class="progress-bar">
+              <div
+                class="progress-fill"
+                id="progressFill"
+                style="width: 0%"
+              ></div>
+            </div>
+            <p class="text-xs text-moss mt-2 text-center" id="progressText">
+              0% Selesai
+            </p>
+
+            <div class="space-y-6 mt-8">
               <div>
                 <p
                   class="text-[10px] uppercase font-black text-moss mb-4 tracking-tighter"
@@ -513,25 +632,33 @@
                 </p>
                 <div class="space-y-1">
                   <label class="check-container"
-                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><input type="checkbox" class="checklist-item" /><span
+                      class="custom-check"
+                    ></span
                     ><span class="text-xs font-bold uppercase"
                       >Jaket Dingin/Polar</span
                     ></label
                   >
                   <label class="check-container"
-                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><input type="checkbox" class="checklist-item" /><span
+                      class="custom-check"
+                    ></span
                     ><span class="text-xs font-bold uppercase"
                       >Pakaian Ganti (2)</span
                     ></label
                   >
                   <label class="check-container"
-                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><input type="checkbox" class="checklist-item" /><span
+                      class="custom-check"
+                    ></span
                     ><span class="text-xs font-bold uppercase"
                       >Sarung Tangan</span
                     ></label
                   >
                   <label class="check-container"
-                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><input type="checkbox" class="checklist-item" /><span
+                      class="custom-check"
+                    ></span
                     ><span class="text-xs font-bold uppercase"
                       >Kaos Kaki(2)</span
                     ></label
@@ -547,19 +674,25 @@
                 </p>
                 <div class="space-y-1">
                   <label class="check-container"
-                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><input type="checkbox" class="checklist-item" /><span
+                      class="custom-check"
+                    ></span
                     ><span class="text-xs font-bold uppercase"
                       >SB & Matras</span
                     ></label
                   >
                   <label class="check-container"
-                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><input type="checkbox" class="checklist-item" /><span
+                      class="custom-check"
+                    ></span
                     ><span class="text-xs font-bold uppercase"
                       >P3K Pribadi</span
                     ></label
                   >
                   <label class="check-container"
-                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><input type="checkbox" class="checklist-item" /><span
+                      class="custom-check"
+                    ></span
                     ><span class="text-xs font-bold uppercase"
                       >Emergency Blanket</span
                     ></label
@@ -575,43 +708,57 @@
                 </p>
                 <div class="space-y-1">
                   <label class="check-container"
-                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><input type="checkbox" class="checklist-item" /><span
+                      class="custom-check"
+                    ></span
                     ><span class="text-xs font-bold uppercase"
                       >Trekking Pole</span
                     ></label
                   >
                   <label class="check-container"
-                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><input type="checkbox" class="checklist-item" /><span
+                      class="custom-check"
+                    ></span
                     ><span class="text-xs font-bold uppercase"
                       >Headlamp</span
                     ></label
                   >
                   <label class="check-container"
-                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><input type="checkbox" class="checklist-item" /><span
+                      class="custom-check"
+                    ></span
                     ><span class="text-xs font-bold uppercase"
                       >Jas Hujan</span
                     ></label
                   >
                   <label class="check-container"
-                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><input type="checkbox" class="checklist-item" /><span
+                      class="custom-check"
+                    ></span
                     ><span class="text-xs font-bold uppercase"
                       >Power Bank</span
                     ></label
                   >
                   <label class="check-container"
-                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><input type="checkbox" class="checklist-item" /><span
+                      class="custom-check"
+                    ></span
                     ><span class="text-xs font-bold uppercase italic underline"
                       >Nasi Bungkus (Beli saat di bc)</span
                     ></label
                   >
                   <label class="check-container"
-                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><input type="checkbox" class="checklist-item" /><span
+                      class="custom-check"
+                    ></span
                     ><span class="text-xs font-bold uppercase"
                       >Air 1.5L (2) & 600ml (2)</span
                     ></label
                   >
                   <label class="check-container"
-                    ><input type="checkbox" /><span class="custom-check"></span
+                    ><input type="checkbox" class="checklist-item" /><span
+                      class="custom-check"
+                    ></span
                     ><span class="text-xs font-bold uppercase"
                       >Coklat & Madu</span
                     ></label
@@ -624,7 +771,7 @@
       </div>
 
       <!-- FOOTER -->
-      <footer class="mt-40 text-center border-t border-white/10 pt-20">
+      <footer class="mt-40 text-center border-t border-white/10 pt-20 fade-in">
         <p
           class="text-[10px] font-black uppercase tracking-[1em] text-moss opacity-50"
         >
@@ -632,5 +779,137 @@
         </p>
       </footer>
     </main>
+
+    <script>
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add("visible");
+            }, index * 100);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all animated elements
+      document.addEventListener("DOMContentLoaded", () => {
+        const animatedElements = document.querySelectorAll(
+          ".fade-in, .slide-in-left, .slide-in-right, .scale-in",
+        );
+        animatedElements.forEach((el) => observer.observe(el));
+
+        // Stagger animation for itinerary items
+        const itineraryItems = document.querySelectorAll(".itinerary-item");
+        itineraryItems.forEach((item, index) => {
+          item.style.opacity = "0";
+          item.style.transform = "translateX(-20px)";
+          item.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+
+          setTimeout(() => {
+            item.style.opacity = "1";
+            item.style.transform = "translateX(0)";
+          }, index * 150);
+        });
+
+        // Stagger animation for gear items
+        const gearItems = document.querySelectorAll(".gear-item");
+        gearItems.forEach((item, index) => {
+          item.style.opacity = "0";
+          item.style.transform = "translateY(10px)";
+          item.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+
+          setTimeout(
+            () => {
+              item.style.opacity = "1";
+              item.style.transform = "translateY(0)";
+            },
+            500 + index * 100,
+          );
+        });
+
+        // Stagger animation for logistik tags
+        const logistikTags = document.querySelectorAll(".logistik-tag");
+        logistikTags.forEach((tag, index) => {
+          tag.style.opacity = "0";
+          tag.style.transform = "scale(0.8)";
+          tag.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+
+          setTimeout(
+            () => {
+              tag.style.opacity = "1";
+              tag.style.transform = "scale(1)";
+            },
+            800 + index * 80,
+          );
+        });
+
+        // Checklist progress tracker
+        const checklistItems = document.querySelectorAll(".checklist-item");
+        const progressFill = document.getElementById("progressFill");
+        const progressText = document.getElementById("progressText");
+        const totalItems = checklistItems.length;
+
+        function updateProgress() {
+          const checkedItems = document.querySelectorAll(
+            ".checklist-item:checked",
+          ).length;
+          const percentage = Math.round((checkedItems / totalItems) * 100);
+          progressFill.style.width = percentage + "%";
+          progressText.textContent = percentage + "% Selesai";
+        }
+
+        checklistItems.forEach((item) => {
+          item.addEventListener("change", updateProgress);
+        });
+
+        // Parallax effect on scroll
+        let ticking = false;
+        window.addEventListener("scroll", () => {
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              const scrolled = window.pageYOffset;
+              const parallaxElements =
+                document.querySelectorAll(".parallax-slow");
+
+              parallaxElements.forEach((el) => {
+                const speed = 0.5;
+                el.style.transform = `translateY(${scrolled * speed}px)`;
+              });
+
+              ticking = false;
+            });
+            ticking = true;
+          }
+        });
+
+        // Add hover effect to time bubbles
+        const timeBubbles = document.querySelectorAll(".time-bubble");
+        timeBubbles.forEach((bubble) => {
+          bubble.addEventListener("mouseenter", function () {
+            this.style.transform = "scale(1.1)";
+          });
+          bubble.addEventListener("mouseleave", function () {
+            this.style.transform = "scale(1)";
+          });
+        });
+
+        // Add click animation to organic cards
+        const organicCards = document.querySelectorAll(".organic-card");
+        organicCards.forEach((card) => {
+          card.addEventListener("click", function () {
+            this.style.transform = "scale(0.98)";
+            setTimeout(() => {
+              this.style.transform = "scale(1)";
+            }, 200);
+          });
+        });
+      });
+    </script>
   </body>
 </html>
